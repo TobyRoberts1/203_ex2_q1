@@ -14,15 +14,26 @@ main:
     # lw $ra, 4($sp)
     # jr $ra
     subui $sp, $sp, 5
-    sw $2, 2($sp)
-    sw $3, 3($sp)
-    sw $4, 4($sp)
+    sw	$7, 2($sp)
+	sw	$13, 3($sp)
+	sw	$ra, 4($sp)
 
-    jal readswitches 
-    addu $2, $0, $1
-    andi $3, $2, 255
-    srli $2, $2, 8 
-    andi $4, $2, 255
+	jal	readswitches
+
+    addu $13, $0, $1
+    addu $7, $0, $1
+    andi $13, $13, 255
+    sw $13, 0($sp)
+    srli $13, $7, 8 
+    sw $13, 1($sp)
+    jal count
+
+    lw	$7, 2($sp)
+	lw	$13, 3($sp)
+	lw	$ra, 4($sp)
+    addui $sp, $sp, 5
+    jr $ra
+
 
     
         
