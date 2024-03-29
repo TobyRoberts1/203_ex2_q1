@@ -1,4 +1,4 @@
-
+#wlink main_q1 lib_ex2
 .global	count
 .text
 count:
